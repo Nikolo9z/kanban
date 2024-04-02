@@ -1,0 +1,68 @@
+<div
+  class="modal"
+  id="exampleModal"
+  tabindex="-1"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 *ngIf="isUpdate==false" class="modal-title fs-5">  Anadir una nueva Tarea </h1>
+        <h1 *ngIf="isUpdate" class="modal-title fs-5">  Actualizar Tarea</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          mat-dialog-close
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-1">
+          <label for="inputNombre" class="form-label"
+            >Nombre de la Tarea:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="inputNombre"
+            aria-describedby="emailHelp"
+            [(ngModel)]="itemUpdate.nombre"
+            
+          />
+          <div *ngIf="isUpdate==false" id="inputEncargado" class="form-text">Ingrese el nombre de la tarea</div>
+        </div>
+        <div class="mb-1">
+          <label for="inputEncargado" class="form-label"
+            >Encargado de la tarea:</label
+          >
+          <input
+          [(ngModel)]="itemUpdate.encargado"
+            type="text"
+            class="form-control"
+            id="inputEncargado"
+            aria-describedby="inputEncargado"
+          />
+          <div *ngIf="isUpdate==false" id="inputEncargado" class="form-text">Debe ingresar el nombre de la persona a cargo de la tarea</div>
+        </div>
+        <label  class="fi">Fecha de inicio</label>
+        <label  class="ft">Fecha de termino</label>
+        <div class="input-group mb-3">
+          <input class="input-date form-control" matInput [matDatepicker]="picker1"  [(ngModel)]="itemUpdate.fechaInicio" (click)="picker1.open()" >
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          
+          <input class="input-date form-control " matInput [matDatepicker]="picker2" [(ngModel)]="itemUpdate.fechaTermino" (click)="picker2.open()">
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </div>
+    </div>
+      <div class="modal-footer" mat-dialog-actions>
+        <button class="btn btn-outline-secondary" mat-button mat-dialog-close >
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-dark"  data-bs-dismiss="modal" [mat-dialog-close]="itemUpdate">
+          Guardar
+        </button>
+      </div>
+      </div>
+        

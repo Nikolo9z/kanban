@@ -1,0 +1,151 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>KANBAN</h1>
+      <!-- <label class="ui-switch">
+        <input type="checkbox" />
+        <div class="slider">
+          <div class="circle"></div>
+        </div>
+      </label> -->
+    </div>
+
+  </div>
+  <div class="row" cdkDropListGroup>
+    <div class="example-container col-4">
+      <span class="subtitle">Pendiente</span> &nbsp;
+      <span class="count-item">{{ toDo.length }} {{ toDo.length <= 1 ? 'Item' : 'Items' }}</span>
+      &nbsp;
+      <span class="botonAdd" (click)="agregarToDo()"> Añadir Tarea</span>
+      
+
+      <div
+        cdkDropList
+        [cdkDropListData]="toDo"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+      <div *ngIf="toDo.length<=0" class="box-add text-center" (click)="agregarToDo()" >
+        <i class="bi bi-plus-circle"></i>
+      </div>
+        @for (item of toDo; track item) {
+        <div class="example-box todo" cdkDrag>
+          <div class="row">
+            <div class="col-12 text-tarea">
+              {{ item.nombre }}
+              <div class="icons">
+                <i
+                  class="bi bi-pencil-square icono-edit"
+                  (click)="openDialogCustom(item, toDo, 'todo')"
+                ></i>
+                <i
+                  class="bi bi-trash icono-delete"
+                  (click)="deleteItem(item, toDo)"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <i class="bi bi-people-fill"> &nbsp;</i
+              ><span class="box-encargado">{{ item.encargado }}</span>
+            </div>
+            <div class="col-6 fecha">
+              <span> {{ item.fechaInicio | date : "dd/MM/yyyy" }} </span
+              ><span>
+                {{ item.fechaTermino | date : "dd/MM/yyyy" }}
+              </span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    <div class="example-container col-4">
+      <span class="subtitle">En Progreso</span>&nbsp;
+      <span class="count-item">{{ Progress.length }} {{ Progress.length <= 1 ? 'Item' : 'Items' }}</span>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="Progress"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        @for (item of Progress; track item) {
+        <div class="example-box inprogress" cdkDrag>
+          <div class="row">
+            <div class="col-12 text-tarea">
+              {{ item.nombre }}
+              <div class="icons">
+                <i
+                  class="bi bi-pencil-square icono-edit"
+                  (click)="openDialogCustom(item, Progress, 'progress')"
+                ></i>
+                <i
+                  class="bi bi-trash icono-delete"
+                  (click)="deleteItem(item, Progress)"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <i class="bi bi-people-fill"> &nbsp;</i
+              ><span class="box-encargado">{{ item.encargado }}</span>
+            </div>
+            <div class="col-6 fecha">
+              <span> {{ item.fechaInicio | date : "dd/MM/yyyy" }} </span
+              ><span>
+                {{ item.fechaTermino | date : "dd/MM/yyyy" }}
+              </span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    <div class="example-container col-4">
+      <span class="subtitle">Finalizado</span>&nbsp;
+      <span class="count-item">{{ Done.length }} {{ Done.length <= 1 ? 'Item' : 'Items' }}</span>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="Done"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        @for (item of Done; track item) {
+        <div class="example-box done" cdkDrag>
+          <div class="row">
+            <div class="col-12 text-tarea">
+              {{ item.nombre }}
+              <div class="icons">
+                <i
+                  class="bi bi-pencil-square icono-edit"
+                  (click)="openDialogCustom(item, Done, 'done')"
+                ></i>
+                <i
+                  class="bi bi-trash icono-delete"
+                  (click)="deleteItem(item, Done)"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <i class="bi bi-people-fill"> &nbsp;</i
+              ><span class="box-encargado">{{ item.encargado }}</span>
+            </div>
+            <div class="col-6 fecha">
+              <span> {{ item.fechaInicio | date : "dd/MM/yyyy" }} </span
+              ><span>
+                {{ item.fechaTermino | date : "dd/MM/yyyy" }}
+              </span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

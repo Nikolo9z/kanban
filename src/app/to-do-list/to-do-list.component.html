@@ -2,22 +2,18 @@
   <div class="row">
     <div class="col-12 text-center">
       <h1>KANBAN</h1>
-      <!-- <label class="ui-switch">
-        <input type="checkbox" />
-        <div class="slider">
-          <div class="circle"></div>
-        </div>
-      </label> -->
     </div>
 
   </div>
-  <div class="row" cdkDropListGroup>
-    <div class="example-container col-4">
-      <span class="subtitle">Pendiente</span> &nbsp;
-      <span class="count-item">{{ toDo.length }} {{ toDo.length <= 1 ? 'Item' : 'Items' }}</span>
-      &nbsp;
-      <span class="botonAdd" (click)="agregarToDo()"> Añadir Tarea</span>
-      
+  <div class="row justify-content-center" cdkDropListGroup>
+    <section class="example-container col-12 col-lg-4">
+      <div class="d-flex gap-1 justify-content-center align-items-center">
+        <span class="subtitle col-4">Pendiente</span> &nbsp;
+        <span class="count-item">{{ toDo.length }} {{ toDo.length <= 1 ? 'Item' : 'Items' }}</span>
+        <span class="botonAdd text-center pt-2 col-4" (click)="agregarToDo()"> Añadir Tarea</span>
+        
+
+      </div>
 
       <div
         cdkDropList
@@ -60,8 +56,8 @@
         </div>
         }
       </div>
-    </div>
-    <div class="example-container col-4">
+    </section>
+    <section class="example-container pt-2 col-12  col-lg-4">
       <span class="subtitle">En Progreso</span>&nbsp;
       <span class="count-item">{{ Progress.length }} {{ Progress.length <= 1 ? 'Item' : 'Items' }}</span>
 
@@ -103,8 +99,8 @@
         </div>
         }
       </div>
-    </div>
-    <div class="example-container col-4">
+    </section>
+    <section class="example-container pt-2 col-12 col-lg-4">
       <span class="subtitle">Finalizado</span>&nbsp;
       <span class="count-item">{{ Done.length }} {{ Done.length <= 1 ? 'Item' : 'Items' }}</span>
 
@@ -146,6 +142,6 @@
         </div>
         }
       </div>
-    </div>
+    </section>
   </div>
 </div>
